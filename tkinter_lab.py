@@ -1,0 +1,10 @@
+from tkinter import *
+window = Tk()
+window.title("Stick Figure Drawing")
+canvas = Canvas(window, width=300, height=300)
+canvas.pack()
+window.mainloop(30)
+canvas.create_oval(100, 50, 180, 130)
+canvas.create_oval(114, 80, 124, 84)
+canvas.create_oval(160, 80, 170, 84)
+canvas.create_arc(115, 100, 280, 120, start=20, extent=145, width=3, outline="red", style="arc")
