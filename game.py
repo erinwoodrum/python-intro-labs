@@ -19,8 +19,6 @@ window = Tk()
 window.title("Dots and Line Game")
 canvas = Canvas(window, width=size_of_board, height=size_of_board)
 canvas.pack() #Geometry manager. 
-# Listen for user clicks
-
 window.mainloop(30)
 
 # First Row and Column
