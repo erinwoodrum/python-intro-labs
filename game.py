@@ -11,7 +11,6 @@ player2_color = '#EE4035'
 player2_color_light = '#EE7E77'
 Green_color = '#7BC043'
 distance_between_dots = size_of_board / number_of_dots 
-print(distance_between_dots)
 dot_width = .25 * distance_between_dots
 edge_width = .1 * distance_between_dots
 
