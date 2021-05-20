@@ -6,4 +6,5 @@
 #import loops
 #import loop_de_loop
 #import functions_lab
-import booleans_lab
+#import booleans_lab
+import conditionals_lab
