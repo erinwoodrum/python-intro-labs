@@ -26,5 +26,7 @@ for n in range(50, 650, 100):
   canvas.create_line(50, n, 550, n, fill='gray', dash = (2,2)) # create 6 rows
   canvas.create_line(n, 50, n, 550, fill='gray', dash = (2,2)) #col1
 
+#Draw the dots in a loop
+
 
 
