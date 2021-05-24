@@ -1,0 +1,16 @@
+[[package]]
+category = "main"
+description = "这是我第一阶段的项目"
+name = "alien-invasion1"
+optional = false
+python-versions = "*"
+version = "1.0.0"
+
+[metadata]
+content-hash = "b86a5701328470648365e2dc506e4894f6d6f28bcba4ee6eb85c325721d9bfbd"
+python-versions = "^3.8"
+
+[metadata.files]
+alien-invasion1 = [
+    {file = "alien_invasion1-1.0.0.tar.gz", hash = "sha256:5007e44266a0b036ab933991a557b24e50da0f5be94fa85ec2d0cd05ab94560f"},
+]
