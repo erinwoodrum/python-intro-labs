@@ -109,6 +109,7 @@ def shade_box(box):
 
 #check to see if it completes any boxes.  If it does, then we'll shade it. 
 def check_completes_box(pos):
+  completing_boxes = 0
   for box in boxes: 
     if(pos in box):
       line_found_count = 0
@@ -117,13 +118,17 @@ def check_completes_box(pos):
           line_found_count = line_found_count + 1
       if(line_found_count == 4): 
         shade_box(box)
-        return True
-  return False
+        completing_boxes = completing_boxes + 1
+  return completing_boxes
+#def create_points_string(p1_points, p2_points):
+
 
 def handle_click(e):
   global player_turn
   global player1_points
   global player2_points
+  global write_turn
+  global write_points
   pos, ptype = get_logical_position(e.x, e.y)
   if(ptype == ""): #invalid section clicked!
     return
@@ -135,29 +140,35 @@ def handle_click(e):
     return #they clicked an already marked line.
   
   #If completes box, give point to player
-  if(check_completes_box(pos)): 
+  boxes_completed = check_completes_box(pos)
+  if(boxes_completed > 0): 
     if(player_turn == 1): 
-      player1_points = player1_points + 1
+      player1_points = player1_points + boxes_completed
     else:
-      player2_points = player2_points + 1
+      player2_points = player2_points + boxes_completed
+    canvas.delete(write_points)
+    write_points = canvas.create_text(550, 20, text="P1: " + str(player1_points) + " P2:" + str(player2_points))
+  else:
+    if(player_turn == 1): 
+      player_turn = 2
+      canvas.delete(write_turn)
+      write_turn = canvas.create_text(60, 20, text="Player 2's Turn", fill=player2_color)
+    else: 
+      player_turn = 1
+      canvas.delete(write_turn)
+      write_turn = canvas.create_text(60, 20, text="Player 1's Turn", fill=player1_color)
 
-  if(player_turn == 1): 
-    player_turn = 2
-    canvas.delete(write_turn)
-    write_turn = canvas.create_text(60, 20, text="Player 2's Turn", fill=player2_color)
-  else: 
-    player_turn = 1
-  
   if (len(marked_lines) == 60):
-    print('game over!~~')
+    canvas.delete(write_turn)
+    winner_string = "It's a tie!"
+    if(player1_points > player2_points): 
+      winner_string = "Player 1 wins!"
+      color = player1_color
+    elif(player2_points > player1_points):
+      "Player 2 wins!"
+      color = player2_color
+    canvas.create_text(250, 20, text=winner_string, fill=color)
 
-  
-    
-
-
-  
-  #determine if game over if yes, display final score. 
-  # if not, change player turn. 
 
 window = Tk()
 window.title("Dots and Line Game")
@@ -167,5 +178,6 @@ window.mainloop(30)
 draw_board(canvas)
 window.bind('<Button-1>', handle_click)
 write_turn = canvas.create_text(60, 20, text="Player 1's Turn", fill=player1_color)
+write_points = ""
 
                                                       
