@@ -147,7 +147,7 @@ def handle_click(e):
     else:
       player2_points = player2_points + boxes_completed
     canvas.delete(write_points)
-    write_points = canvas.create_text(550, 20, text="P1: " + str(player1_points) + " P2:" + str(player2_points))
+    write_points = canvas.create_text(550, 20, text="P1: " + str(player1_points) + " | P2:" + str(player2_points))
   else:
     if(player_turn == 1): 
       player_turn = 2
